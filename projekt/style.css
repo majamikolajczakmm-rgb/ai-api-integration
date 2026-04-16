@@ -1,0 +1,639 @@
+/* Reset i Podstawowe Style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f9;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+h4 { 
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 0.8rem;
+    color: #4a5a6a; 
+    font-size: 1.25rem;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: #7f5af0;
+}
+
+a:hover {
+    color: #5636d1;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.section-padding {
+    padding: 60px 0;
+}
+
+.light-bg {
+    background-color: #ffffff;
+}
+
+.dark-bg {
+    background-color: #161625;
+    color: #e0e0e0;
+}
+.dark-bg h2, .dark-bg p {
+    color: #fff;
+}
+.dark-bg a {
+    color: #9d7fee;
+}
+.dark-bg a:hover {
+    color: #cab3ff;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* === ZMIANY W NAGŁÓWKU - METODA 1 === */
+.sticky-header {
+    background: rgba(22, 22, 37, 0.9);
+    color: #fff;
+    padding: 0.8rem 0; /* Lekko zmniejszony padding góra/dół */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.sticky-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Pozwól elementom zawijać się na mniejszych ekranach */
+}
+
+.sticky-header .logo a {
+    color: #fff;
+    font-size: 1.6rem; /* ZMNIEJSZONY FONT LOGA */
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    margin-right: 20px; /* Dodaj trochę przestrzeni po prawej stronie loga */
+    white-space: nowrap; /* Aby logo się nie łamało */
+}
+
+.sticky-header ul {
+    list-style: none;
+    display: flex;
+    align-items: center; /* Wyrównaj elementy menu w pionie */
+    margin: 0; 
+    padding: 0; 
+    flex-wrap: wrap; /* Pozwól linkom się zawijać, jeśli jest bardzo ciasno */
+    justify-content: flex-end; /* Domyślnie przyklej do prawej */
+}
+
+.sticky-header ul li {
+    margin-left: 12px; /* ZMNIEJSZONY MARGINES między elementami menu */
+}
+.sticky-header ul li:first-child { 
+    margin-left: 0; /* Usuń margines dla pierwszego elementu, jeśli jest taka potrzeba */
+}
+
+.sticky-header ul li a {
+    color: #fff;
+    padding: 8px 10px; /* LEKKO DOSTOSOWANY PADDING */
+    transition: color 0.3s ease;
+    white-space: nowrap; /* Zapobiegaj łamaniu tekstu w linkach menu */
+    display: inline-block; /* Aby padding działał poprawnie i linki były obok siebie */
+}
+
+.sticky-header ul li a:hover {
+    color: #cab3ff;
+}
+/* === KONIEC ZMIAN W NAGŁÓWKU === */
+
+/* Hero Section */
+.hero-section {
+    background-color: #5e42a6; 
+    background-image: linear-gradient(135deg, #8c7ae6 0%, #7b62cc 50%, #5e42a6 100%);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    transition: background-image 0.5s ease-in-out; 
+}
+
+.hero-section::before { 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); 
+}
+
+.hero-content {
+    position: relative; 
+    z-index: 1;
+}
+
+.hero-section h1 {
+    color: #ffffff; 
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #ffffff; 
+}
+
+/* Przyciski CTA */
+.cta-button {
+    display: inline-block;
+    background: #5b2bed; 
+    color: #fff; 
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.cta-button:hover {
+    background: #3c18ca; 
+    color: #fff;
+    transform: translateY(-2px); 
+}
+
+.cta-button-secondary {
+    display: inline-block;
+    background: transparent;
+    color: #7f5af0;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #7f5af0;
+    transition: all 0.3s ease;
+}
+.cta-button-secondary:hover {
+    background: #7f5af0;
+    color: #fff;
+}
+
+/* Moduł Horoskopu Dziennego */
+.section-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: #555;
+}
+.dark-bg .section-intro { 
+    color: #ccc;
+}
+
+.zodiac-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
+    text-align: center; 
+}
+
+.zodiac-sign-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;   
+    justify-content: center; 
+    text-align: center;    
+}
+
+
+.zodiac-sign-card img {
+    width: 60px; 
+    height: 60px;
+    margin: 0 auto 10px; 
+    object-fit: contain; 
+    display: block; 
+}
+
+
+.zodiac-sign-card p {
+    margin-bottom: 0;
+    font-weight: bold;
+    color: #333;
+    width: 100%; 
+    text-align: center; 
+}
+
+
+/* Wspólny kontener dla wyświetlania horoskopu i charakterystyki */
+.content-display-area { 
+    margin-top: 30px; 
+    padding: 25px;
+    background-color: #f8f6ff; 
+    border-radius: 8px;
+    border: 1px solid #e0d8f7;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    min-height: 100px; 
+    text-align: left; 
+}
+
+/* Style dla wyświetlanego tekstu horoskopu */
+.horoscope-text-content h2 {
+    color: #5636d1; 
+    margin-bottom: 15px;
+    font-size: 1.8rem; 
+}
+.horoscope-text-content p {
+    margin-bottom: 12px;
+    line-height: 1.7;
+}
+
+/* Style dla wyświetlanej charakterystyki znaku */
+.charakterystyka-content h2 {
+    color: #5636d1; 
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+.charakterystyka-content h3 { 
+    color: #6a44d3; 
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-size: 1.4rem; 
+    border-bottom: 1px solid #d1c4e9;
+    padding-bottom: 5px;
+}
+.charakterystyka-content h4 { 
+    color: #7f5af0; 
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1.15rem;
+}
+.charakterystyka-content p {
+    margin-bottom: 12px;
+    line-height: 1.7;
+}
+
+
+/* Moduł Odkryj Swój Znak */
+.discover-sign-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 15px;
+    max-width: 500px;
+    margin: 20px auto;
+}
+.discover-sign-form div {
+    display: flex;
+    flex-direction: column;
+}
+.discover-sign-form label {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #555;
+}
+.discover-sign-form input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100px; 
+}
+.sign-result {
+    margin-top: 20px;
+    padding: 15px; 
+    background-color: #e9e1ff; 
+    border-left: 5px solid #7f5af0;
+    border-radius: 5px;
+    text-align: center;
+}
+.sign-result strong {
+    color: #5636d1;
+}
+.sign-result .cta-button-secondary { 
+    margin-top: 15px;
+}
+
+/* STYLE DLA SEKCJI KOMPATYBILNOŚCI */
+.compatibility-module {
+    background-color: #f8f6ff; 
+}
+
+.compatibility-form {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    align-items: flex-end; 
+    gap: 20px; 
+    margin-bottom: 30px;
+}
+
+.compatibility-form .form-group {
+    display: flex;
+    flex-direction: column; 
+}
+
+.compatibility-form label {
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.compatibility-form select {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px; 
+    background-color: #fff;
+    font-size: 1rem;
+    min-width: 200px; 
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.compatibility-form select:focus {
+    outline: none;
+    border-color: #7f5af0; 
+    box-shadow: 0 0 0 2px rgba(127, 90, 240, 0.2);
+}
+
+.compatibility-form .cta-button {
+    padding: 10px 25px; 
+    align-self: flex-end; 
+}
+
+.compatibility-result-area {
+    /* Dziedziczy style z .content-display-area */
+}
+
+.compatibility-text-content h2 { 
+    color: #5636d1; 
+    margin-bottom: 15px;
+    font-size: 1.8rem; 
+}
+.compatibility-text-content h3 { 
+    color: #6a44d3; 
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-size: 1.4rem; 
+    border-bottom: 1px solid #d1c4e9;
+    padding-bottom: 5px;
+}
+.compatibility-text-content h4 { 
+    color: #7f5af0; 
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1.15rem;
+}
+.compatibility-text-content p {
+    margin-bottom: 12px;
+    line-height: 1.7;
+}
+
+
+/* ===== STYLE DLA SEKCJI KARTY TAROTA ===== */
+.tarot-card-module h2 { 
+    margin-bottom: 0.5rem; 
+}
+
+.tarot-card-display {
+    margin: 0 auto 2rem; 
+    width: 200px; 
+    max-width: 70%; 
+    height: auto; 
+    padding: 10px; 
+    background-color: rgba(255, 255, 255, 0.03); 
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(176, 140, 255, 0.2), inset 0 0 8px rgba(220, 190, 255, 0.15); 
+    cursor: default; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#tarotCardImage {
+    width: 100%;
+    max-height: 300px; 
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid rgba(200, 180, 255, 0.3); 
+    margin-bottom: 10px; 
+}
+
+#tarotCardName {
+    margin-top: 0.5rem;
+    font-size: 1.4rem; 
+    color: #e0e0e0; 
+    min-height: 1.5em; 
+    font-family: 'Playfair Display', serif; 
+}
+
+#drawTarotCardButton {
+    margin-bottom: 2.5rem; 
+    padding: 14px 35px; 
+    font-size: 1.1rem;
+    background: #9d7fee; 
+    box-shadow: 0 2px 8px rgba(157, 127, 238, 0.4);
+}
+#drawTarotCardButton:hover {
+    background: #7f5af0; 
+}
+
+.tarot-interpretation {
+    margin-top: 1rem; 
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.25); 
+    border-radius: 8px;
+    min-height: 120px; 
+    color: #d0d0d0; 
+    text-align: left; 
+    line-height: 1.75;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.tarot-interpretation p {
+    margin-bottom: 0; 
+}
+
+.tarot-interpretation .loading-text {
+    font-style: italic;
+    color: #999; 
+}
+/* ===== KONIEC STYLI DLA SEKCJI KARTY TAROTA ===== */
+
+
+/* CTA Newsletter */
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+.newsletter-form input[type="email"] {
+    padding: 12px;
+    border: 1px solid #555; 
+    border-radius: 25px;
+    width: 300px;
+    background: rgba(255,255,255,0.1); 
+    color: #fff;
+}
+.newsletter-form input[type="email"]::placeholder {
+    color: #ccc;
+}
+.newsletter-form .cta-button {
+    background: #9d7fee; 
+}
+.newsletter-form .cta-button:hover {
+    background: #7f5af0;
+}
+
+footer {
+    background: #2c3e50;
+    color: #ccc;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9rem;
+}
+footer p {
+    margin-bottom: 0.5rem;
+}
+footer nav a {
+    color: #ccc;
+    margin: 0 5px;
+}
+footer nav a:hover {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .sticky-header .container {
+        /* flex-direction: column; -- Jeśli chcesz, aby logo było nad menu na mobilkach */
+        /* align-items: flex-start; */
+    }
+    .sticky-header .logo a {
+        font-size: 1.5rem; /* Mniejsze logo na mobilkach */
+    }
+    .sticky-header ul {
+        margin-top: 0; /* Zresetuj margines, jeśli nie jest column */
+        /* justify-content: space-around; -- Dostosuj, jeśli menu się zawija */
+    }
+    .sticky-header ul li {
+        margin-left: 8px; /* Mniejsze odstępy między linkami */
+    }
+    .sticky-header ul li a {
+        padding: 6px 8px; /* Mniejszy padding linków */
+    }
+
+
+    .hero-section h1 {
+        font-size: 2.5rem; 
+    }
+    .hero-section p {
+        font-size: 1rem; 
+    }
+    
+    .tarot-card-display {
+        width: 160px; 
+    }
+    #tarotCardImage {
+        max-height: 240px;
+    }
+    #tarotCardName {
+        font-size: 1.2rem;
+    }
+    .tarot-interpretation {
+        padding: 20px;
+        font-size: 0.9rem;
+    }
+
+
+    .discover-sign-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .discover-sign-form input[type="number"] {
+        width: 100%;
+    }
+    .newsletter-form {
+        flex-direction: column;
+    }
+    .newsletter-form input[type="email"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .compatibility-form {
+        flex-direction: column; /* Formularz kompatybilności w kolumnie na mobilkach */
+        align-items: stretch;
+    }
+    .compatibility-form .form-group {
+        width: 100%; /* Selecty zajmują całą szerokość */
+    }
+    .compatibility-form select {
+        min-width: 0; /* Usuń min-width */
+        width: 100%;
+    }
+    .compatibility-form .cta-button {
+        width: 100%;
+        margin-top: 10px; /* Odstęp od selectów */
+    }
+
+}
+
+.error-message {
+    color: #ff6b6b; 
+    font-weight: bold;
+    padding: 10px; 
+    background-color: rgba(255, 107, 107, 0.05); 
+    border-left: 3px solid #ff6b6b;
+    border-radius: 4px; 
+}
+.error-details {
+    color: #ff8b8b;
+    font-size: 0.9em;
+    margin-top: 5px;
+    padding-left: 10px;
+}

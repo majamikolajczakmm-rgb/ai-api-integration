@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gwiezdna Przystań - Twoja Kosmiczna Inspiracja</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <header class="sticky-header">
+        <nav class="container">
+            <div class="logo">
+                <a href="#">Gwiezdna Przystań</a>
+            </div>
+            <ul>
+                <li><a href="#">Strona Główna</a></li>
+                <li><a href="#znaki-zodiaku-sekcja">Znaki Zodiaku</a></li>
+                <li><a href="#horoskopy-sekcja">Horoskopy</a></li>
+                <li><a href="#kompatybilnosc-sekcja">Kompatybilność</a></li> <!-- Dodany link w menu -->
+                <li><a href="#tarot-sekcja">Karta Tarota</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container hero-content">
+                <h1>Odkryj siebie w konstelacjach.</h1>
+                <p>Twoja codzienna dawka kosmicznej inspiracji i wiedzy o znakach zodiaku.</p>
+                <a href="#horoskopy-sekcja" class="cta-button">Zobacz Horoskop Dzienny</a>
+            </div>
+        </section>
+
+        <!-- Moduł Horoskopu Dziennego (Szybki Dostęp) -->
+        <section id="horoskopy-sekcja" class="daily-horoscope-module container section-padding">
+            <h2>Twój Horoskop Dzienny</h2>
+            <p class="section-intro">Wybierz swój znak zodiaku, aby zobaczyć dzisiejszą przepowiednię.</p>
+            <div class="zodiac-grid">
+                <div class="zodiac-sign-card"><a href="#" data-sign="Baran"><img id="img-aries" src="images/loading-spinner.gif" alt="Baran"><p>Baran</p></a></div>
+                <div class="zodiac-sign-card"><a href="#" data-sign="Byk"><img id="img-taurus" src="images/loading-spinner.gif" alt="Byk"><p>Byk</p></a></div>
+                <div class="zodiac-sign-card"><a href="#" data-sign="Bliźnięta"><img id="img-gemini" src="images/loading-spinner.gif" alt="Bliźnięta"><p>Bliźnięta</p></a></div>
+                <div class="zodiac-sign-card"><a href="#" data-sign="Rak"><img id="img-cancer" src="images/loading-spinner.gif" alt="Rak"><p>Rak</p></a></div>
+                <div class="zodiac-sign-card"><a href="#" data-sign="Lew"><img id="img-leo" src="images/loading-spinner.gif" alt="Lew"><p>Lew</p></a></div>
+                <div class="zodiac-sign-card"><a href="#" data-sign="Panna"><img id="img-virgo" src="images/loading-spinner.gif" alt="Panna"><p>Panna</p></a></div>
+                <div class="zodiac-sign-card"><a href="#" data-sign="Waga"><img id="img-libra" src="images/loading-spinner.gif" alt="Waga"><p>Waga</p></a></div>
+                <div class="zodiac-sign-card"><a href="#" data-sign="Skorpion"><img id="img-scorpio" src="images/loading-spinner.gif" alt="Skorpion"><p>Skorpion</p></a></div>
+                <div class="zodiac-sign-card"><a href="#" data-sign="Strzelec"><img id="img-sagittarius" src="images/loading-spinner.gif" alt="Strzelec"><p>Strzelec</p></a></div>
+                <div class="zodiac-sign-card"><a href="#" data-sign="Koziorożec"><img id="img-capricorn" src="images/loading-spinner.gif" alt="Koziorożec"><p>Koziorożec</p></a></div>
+                <div class="zodiac-sign-card"><a href="#" data-sign="Wodnik"><img id="img-aquarius" src="images/loading-spinner.gif" alt="Wodnik"><p>Wodnik</p></a></div>
+                <div class="zodiac-sign-card"><a href="#" data-sign="Ryby"><img id="img-pisces" src="images/loading-spinner.gif" alt="Ryby"><p>Ryby</p></a></div>
+            </div>
+             <div id="contentDisplayArea" class="content-display-area section-padding" style="margin-top: 20px;">
+                <!-- Tutaj pojawi się horoskop lub charakterystyka -->
+            </div>
+        </section>
+
+        <!-- Moduł "Odkryj Swój Znak" -->
+        <section id="odkryj-znak-sekcja" class="discover-sign-module section-padding light-bg">
+            <div class="container">
+                <h2>Nie znasz swojego znaku zodiaku?</h2>
+                <p class="section-intro">Wprowadź swoją datę urodzenia, a my pomożemy Ci go odkryć!</p>
+                <form id="discoverSignForm" class="discover-sign-form">
+                    <div>
+                        <label for="birthDay">Dzień:</label>
+                        <input type="number" id="birthDay" name="birthDay" min="1" max="31" required>
+                    </div>
+                    <div>
+                        <label for="birthMonth">Miesiąc:</label>
+                        <input type="number" id="birthMonth" name="birthMonth" min="1" max="12" required>
+                    </div>
+                    <button type="submit" class="cta-button">Pokaż mój znak</button>
+                </form>
+                <div id="yourSignResult" class="sign-result" style="display:none;"></div>
+            </div>
+        </section>
+
+        <!-- === SEKCJA: KOMPATYBILNOŚĆ ZNAKÓW === -->
+        <section id="kompatybilnosc-sekcja" class="compatibility-module container section-padding">
+            <h2>Sprawdź Kompatybilność Znaków Zodiaku</h2>
+            <p class="section-intro">Wybierz dwa znaki, aby dowiedzieć się, jak gwiazdy widzą ich wzajemne relacje!</p>
+            
+            <form id="compatibilityForm" class="compatibility-form">
+                <div class="form-group">
+                    <label for="znak1Select">Pierwszy Znak:</label>
+                    <select id="znak1Select" name="znak1">
+                        <option value="">-- Wybierz Znak --</option>
+                        <option value="Baran">Baran</option>
+                        <option value="Byk">Byk</option>
+                        <option value="Bliźnięta">Bliźnięta</option>
+                        <option value="Rak">Rak</option>
+                        <option value="Lew">Lew</option>
+                        <option value="Panna">Panna</option>
+                        <option value="Waga">Waga</option>
+                        <option value="Skorpion">Skorpion</option>
+                        <option value="Strzelec">Strzelec</option>
+                        <option value="Koziorożec">Koziorożec</option>
+                        <option value="Wodnik">Wodnik</option>
+                        <option value="Ryby">Ryby</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="znak2Select">Drugi Znak:</label>
+                    <select id="znak2Select" name="znak2">
+                        <option value="">-- Wybierz Znak --</option>
+                        <option value="Baran">Baran</option>
+                        <option value="Byk">Byk</option>
+                        <option value="Bliźnięta">Bliźnięta</option>
+                        <option value="Rak">Rak</option>
+                        <option value="Lew">Lew</option>
+                        <option value="Panna">Panna</option>
+                        <option value="Waga">Waga</option>
+                        <option value="Skorpion">Skorpion</option>
+                        <option value="Strzelec">Strzelec</option>
+                        <option value="Koziorożec">Koziorożec</option>
+                        <option value="Wodnik">Wodnik</option>
+                        <option value="Ryby">Ryby</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="cta-button">Sprawdź Dopasowanie</button>
+            </form>
+
+            <div id="compatibilityResult" class="compatibility-result-area content-display-area" style="display: none; margin-top: 30px;">
+                <!-- Tutaj pojawi się opis kompatybilności -->
+            </div>
+        </section>
+        <!-- === KONIEC SEKCJI KOMPATYBILNOŚCI === -->
+       
+
+        <!-- Sekcja Karta Dnia z Tarota -->
+        <section id="tarot-sekcja" class="tarot-card-module section-padding dark-bg">
+            <div class="container text-center">
+                <h2>Twoja Karta Tarota na Dziś</h2>
+                <p class="section-intro">Wylosuj kartę, aby otrzymać przesłanie i wskazówkę od Tarota.</p>
+                
+                <div id="tarotCardDisplay" class="tarot-card-display">
+                    <img id="tarotCardImage" src="images/tarot-back.jpg" alt="Rewers karty Tarota">
+                    <h3 id="tarotCardName">Wylosuj Kartę</h3>
+                </div>
+
+                <button id="drawTarotCardButton" class="cta-button">Wylosuj Kartę</button>
+                
+                <div id="tarotCardInterpretation" class="tarot-interpretation">
+                    <p>Kliknij przycisk, aby odkryć swoje przesłanie.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wezwanie do Działania (CTA) - Newsletter -->
+        <section class="cta-newsletter-module section-padding dark-bg">
+            <div class="container text-center">
+                <h2>Dołącz do naszej kosmicznej społeczności!</h2>
+                <p>Zapisz się na newsletter, by otrzymywać horoskop tygodniowy i specjalne treści prosto na swoją skrzynkę.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Twój adres e-mail" required>
+                    <button type="submit" class="cta-button">Subskrybuj</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Gwiezdna Przystań. Wszelkie prawa zastrzeżone.</p>
+            <nav>
+                <a href="#">Polityka Prywatności</a> |
+                <a href="#">Regulamin</a> |
+                <a href="#">Kontakt</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        console.log(">>>> SKRYPT GŁÓWNY HTML WCZYTANY <<<<");
+
+        // --- SKRYPTY ISTNIEJĄCE (ODKRYJ ZNAK) ---
+        const discoverSignForm = document.getElementById('discoverSignForm');
+        if (discoverSignForm) {
+            discoverSignForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const day = parseInt(document.getElementById('birthDay').value);
+                const month = parseInt(document.getElementById('birthMonth').value);
+                const resultDiv = document.getElementById('yourSignResult');
+                let sign = "Nie udało się określić znaku.";
+
+                if (month && day) { 
+                    if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) sign = "Baran";
+                    else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) sign = "Byk";
+                    else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) sign = "Bliźnięta";
+                    else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) sign = "Rak";
+                    else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) sign = "Lew";
+                    else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) sign = "Panna";
+                    else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) sign = "Waga";
+                    else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) sign = "Skorpion";
+                    else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) sign = "Strzelec";
+                    else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) sign = "Koziorożec";
+                    else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) sign = "Wodnik";
+                    else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) sign = "Ryby";
+                }
+                resultDiv.innerHTML = `<p>Twój znak zodiaku to: <strong>${sign}</strong>.</p><a href="#" id="learnMoreAboutDiscoveredSign" data-sign="${sign}" class="cta-button-secondary">Dowiedz się więcej o znaku ${sign}</a>`;
+                resultDiv.style.display = 'block';
+
+                const learnMoreButton = document.getElementById('learnMoreAboutDiscoveredSign');
+                if (learnMoreButton && sign !== "Nie udało się określić znaku.") {
+                    learnMoreButton.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const currentSign = this.dataset.sign;
+                        const displayArea = document.getElementById('contentDisplayArea'); 
+                        
+                        if (displayArea) {
+                            displayArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            fetchAndDisplayZnakCharakterystyka(currentSign, displayArea); 
+                        } else {
+                            console.error("Element #contentDisplayArea nie został znaleziony do wyświetlenia charakterystyki.");
+                        }
+                    });
+                } else {
+                    if (!learnMoreButton) console.warn("Przycisk 'learnMoreAboutDiscoveredSign' nie został znaleziony po wygenerowaniu wyniku.");
+                }
+            });
+        } else {
+            console.warn("Element 'discoverSignForm' nie został znaleziony.");
+        }
+
+        // --- FUNKCJA DO POBIERANIA I WYŚWIETLANIA CHARAKTERYSTYKI ---
+        async function fetchAndDisplayZnakCharakterystyka(sign, displayElement) {
+            if (!displayElement) { console.error("Brak elementu do wyświetlania charakterystyki."); return; }
+            displayElement.innerHTML = '<p>Ładowanie charakterystyki znaku...</p>';
+            console.log(`>>> FETCH CHARAKTERYSTYKI dla ${sign} <<<`);
+            try {
+                const response = await fetch('http://127.0.0.1:5001/api/znak-charakterystyka', { 
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', },
+                    body: JSON.stringify({ sign: sign }),
+                });
+                console.log("Odpowiedź z /api/znak-charakterystyka:", response);
+                if (!response.ok) {
+                    let errorMsg = `Błąd serwera (charakterystyka): ${response.status} ${response.statusText}`;
+                    try { const errorData = await response.json(); errorMsg = errorData.error ? `${errorMsg} - ${errorData.error}` : errorMsg; if(errorData.details) errorMsg += ` (Szczegóły: ${errorData.details})`; console.error("Odpowiedź błędu serwera (JSON, charakterystyka):", errorData); } catch (e) { console.warn("Nie udało się sparsować JSON z odpowiedzi błędu serwera (charakterystyka):", e); try { const et = await response.text(); errorMsg += ` | Treść: ${et.substring(0,100)}`; } catch(e2){} }
+                    throw new Error(errorMsg);
+                }
+                const data = await response.json();
+                console.log("Dane JSON z /api/znak-charakterystyka:", data);
+                if (data.charakterystyka) {
+                    let formattedText = data.charakterystyka
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Zamiana **tekst** na <strong>tekst</strong>
+                        .replace(/^## (.*?)(?:\r\n|\r|\n|$)/gm, '<h3>$1</h3>')
+                        .replace(/^### (.*?)(?:\r\n|\r|\n|$)/gm, '<h4>$1</h4>')
+                        .replace(/\n\n/g, '</p><p>')
+                        .replace(/\n/g, '<br>');
+                    if (!formattedText.trim().startsWith('<h') && !formattedText.trim().startsWith('<p')) { formattedText = `<p>${formattedText}</p>`; }
+                    formattedText = formattedText.replace(/<p><\/p>/g, '').replace(/<p><br\s*\/?>\s*<\/p>/gi, '');
+                    displayElement.innerHTML = `<div class="charakterystyka-content"><h2>Charakterystyka: ${sign}</h2>${formattedText}</div>`;
+                } else if (data.error) {
+                     displayElement.innerHTML = `<p class="error-message">Błąd: ${data.error}${data.details ? '<br>Szczegóły: ' + data.details : ''}</p>`;
+                } else {
+                    displayElement.innerHTML = '<p class="error-message">Nie udało się pobrać charakterystyki (nieoczekiwana odpowiedź).</p>';
+                }
+            } catch (error) {
+                console.error('Błąd podczas pobierania charakterystyki:', error);
+                displayElement.innerHTML = `<p class="error-message">Wystąpił błąd (charakterystyka): ${error.message}</p>`;
+            }
+        }
+
+        // --- SKRYPT POBIERANIA HOROSKOPU ---
+        async function fetchAndDisplayHoroscope(sign, type = 'dzienny') {
+            const horoscopeDisplayElement = document.getElementById('contentDisplayArea'); 
+            if (!horoscopeDisplayElement) { console.error("Brak elementu #contentDisplayArea dla horoskopu"); return; }
+            horoscopeDisplayElement.innerHTML = '<p>Ładowanie horoskopu...</p>';
+            if (horoscopeDisplayElement) { horoscopeDisplayElement.scrollIntoView({ behavior: 'smooth', block: 'start' });}
+            console.log(`>>> FETCH HOROSKOPU dla ${sign} <<<`);
+            try {
+                const response = await fetch('http://127.0.0.1:5001/api/horoscope', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', },
+                    body: JSON.stringify({ sign: sign, type: type }),
+                });
+                console.log("Odpowiedź z /api/horoscope (horoskopy):", response);
+                if (!response.ok) {
+                    let errorMsg = `Błąd serwera (horoskop): ${response.status} ${response.statusText}`;
+                    try { const errorData = await response.json(); errorMsg = errorData.error ? `${errorMsg} - ${errorData.error}` : errorMsg; if(errorData.details) errorMsg += ` (Szczegóły: ${errorData.details})`; } catch (e) { console.warn("Błąd parsowania JSON błędu (horoskop):", e); try { const et = await response.text(); errorMsg += ` | Treść: ${et.substring(0,100)}`; } catch(e2){} }
+                    throw new Error(errorMsg);
+                }
+                const data = await response.json();
+                if (data.horoscope) {
+                    let formattedHoroscope = data.horoscope.replace(/\n/g, '<br>');
+                    formattedHoroscope = formattedHoroscope.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Zamiana **tekst** na <strong>tekst</strong>
+                    horoscopeDisplayElement.innerHTML = `<div class="horoscope-text-content"><h2>Horoskop ${type} dla: ${sign}</h2><p>${formattedHoroscope}</p></div>`;
+                } else if (data.error) {
+                     horoscopeDisplayElement.innerHTML = `<p class="error-message">Błąd: ${data.error}${data.details ? '<br>Szczegóły: ' + data.details : ''}</p>`;
+                } else {
+                    horoscopeDisplayElement.innerHTML = '<p class="error-message">Nie udało się pobrać horoskopu.</p>';
+                }
+            } catch (error) {
+                console.error('Błąd podczas pobierania horoskopu:', error);
+                horoscopeDisplayElement.innerHTML = `<p class="error-message">Wystąpił błąd (horoskop): ${error.message}</p>`;
+            }
+        }
+
+        const zodiacLinks = document.querySelectorAll('.zodiac-sign-card a');
+        if (zodiacLinks.length > 0) {
+            zodiacLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const signName = this.dataset.sign; 
+                    if (signName) { 
+                        fetchAndDisplayHoroscope(signName, 'dzienny'); 
+                    }
+                    else { console.warn("Kliknięto na kartę znaku bez data-sign."); }
+                });
+            });
+        } else {
+            console.warn("Nie znaleziono '.zodiac-sign-card a'.");
+        }
+
+        // === SKRYPT DLA KOMPATYBILNOŚCI ZNAKÓW ===
+        const compatibilityForm = document.getElementById('compatibilityForm');
+        const compatibilityResultDiv = document.getElementById('compatibilityResult');
+
+        if (compatibilityForm && compatibilityResultDiv) {
+            compatibilityForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+                const sign1 = document.getElementById('znak1Select').value;
+                const sign2 = document.getElementById('znak2Select').value;
+
+                if (!sign1 || !sign2) {
+                    compatibilityResultDiv.innerHTML = '<p class="error-message">Proszę wybrać oba znaki zodiaku.</p>';
+                    compatibilityResultDiv.style.display = 'block';
+                    compatibilityResultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    return;
+                }
+
+                compatibilityResultDiv.innerHTML = '<p>Analizuję dopasowanie gwiazd...</p>';
+                compatibilityResultDiv.style.display = 'block';
+                compatibilityResultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                console.log(`>>> FETCH KOMPATYBILNOŚCI dla ${sign1} i ${sign2} <<<`);
+
+                try {
+                    const response = await fetch('http://127.0.0.1:5001/api/kompatybilnosc', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', },
+                        body: JSON.stringify({ sign1: sign1, sign2: sign2 }),
+                    });
+                    console.log("Odpowiedź z /api/kompatybilnosc:", response);
+
+                    if (!response.ok) {
+                        let errorMsg = `Błąd serwera (kompatybilność): ${response.status} ${response.statusText}`;
+                        try { const errorData = await response.json(); errorMsg = errorData.error ? `${errorMsg} - ${errorData.error}` : errorMsg; if(errorData.details) errorMsg += ` (Szczegóły: ${errorData.details})`; console.error("Odpowiedź błędu serwera (JSON, kompatybilność):", errorData); } catch (e) { console.warn("Nie udało się sparsować JSON z odpowiedzi błędu serwera (kompatybilność):", e); try { const et = await response.text(); errorMsg += ` | Treść: ${et.substring(0,100)}`; } catch(e2){} }
+                        throw new Error(errorMsg);
+                    }
+
+                    const data = await response.json();
+                    console.log("Dane JSON z /api/kompatybilnosc:", data);
+
+                    if (data.compatibility) {
+                        let formattedText = data.compatibility
+                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Zamiana **tekst** na <strong>tekst</strong>
+                            .replace(/\n/g, '<br>');
+                        formattedText = formattedText.replace(/^## (.*?)(<br>|$)/gm, '<h3>$1</h3>');
+                        formattedText = formattedText.replace(/^### (.*?)(<br>|$)/gm, '<h4>$1</h4>');
+                         if (!formattedText.trim().startsWith('<h') && !formattedText.trim().startsWith('<p')) { 
+                            formattedText = `<p>${formattedText}</p>`;
+                        }
+                        compatibilityResultDiv.innerHTML = `<div class="compatibility-text-content"><h2>Kompatybilność: ${sign1} i ${sign2}</h2>${formattedText}</div>`;
+                    } else if (data.error) {
+                        compatibilityResultDiv.innerHTML = `<p class="error-message">Błąd: ${data.error}${data.details ? '<br>Szczegóły: ' + data.details : ''}</p>`;
+                    } else {
+                        compatibilityResultDiv.innerHTML = '<p class="error-message">Nie udało się pobrać opisu kompatybilności (nieoczekiwana odpowiedź).</p>';
+                    }
+                } catch (error) {
+                    console.error('Błąd podczas sprawdzania kompatybilności:', error);
+                    compatibilityResultDiv.innerHTML = `<p class="error-message">Wystąpił błąd (kompatybilność): ${error.message}</p>`;
+                }
+            });
+        } else {
+            if (!compatibilityForm) console.warn("Formularz 'compatibilityForm' nie został znaleziony.");
+            if (!compatibilityResultDiv) console.warn("Element 'compatibilityResult' nie został znaleziony.");
+        }
+        // === KONIEC SKRYPTU DLA KOMPATYBILNOŚCI ===
+
+
+        // --- SKRYPT DO DYNAMICZNEGO ŁADOWANIA OBRAZKÓW (SYMULACJA API) ---
+        async function fetchImageFromApi(imageType, identifier = null) {
+            // console.log(`Symulacja API: Żądanie obrazka typu: ${imageType}, identyfikator: ${identifier}`);
+            await new Promise(resolve => setTimeout(resolve, Math.random() * 200 + 100));
+            let imageUrl = 'images/placeholder-default.png'; 
+            if (imageType === 'zodiacIcon') {
+                if (identifier) imageUrl = `images/zodiac-${identifier.toLowerCase().replace(/\s+/g, '-')}-api.png`;
+            } else if (imageType === 'heroBackground') { 
+                 imageUrl = 'images/hero-background-api.jpg';
+            }
+            // console.log(`Symulacja API: Zwracam URL: ${imageUrl} dla typu ${imageType}`);
+            return imageUrl;
+        }
+
+        async function setImageSrc(elementId, imageType, identifier = null) {
+            const imgElement = document.getElementById(elementId);
+            if (imgElement) {
+                imgElement.src = 'images/loading-spinner.gif';
+                try {
+                    const imageUrl = await fetchImageFromApi(imageType, identifier);
+                    imgElement.src = imageUrl;
+                    imgElement.alt = identifier || imageType; 
+                    imgElement.onerror = function() { this.onerror=null; this.src='images/placeholder-error.png'; console.warn(`Nie znaleziono obrazka: ${imageUrl}. Używam placeholder-error.`); };
+                } catch (error) { console.error(`Błąd ładowania obrazka dla ${elementId}:`, error); imgElement.src = 'images/placeholder-error.png'; }
+            } else { /* console.warn(`Nie znaleziono elementu obrazka o ID: ${elementId}`); */ }
+        }
+         async function setElementBackground(elementId, imageType, identifier = null) { 
+            const element = document.getElementById(elementId);
+            if (element) {
+                try {
+                    const imageUrl = await fetchImageFromApi(imageType, identifier);
+                    element.style.backgroundImage = `url('${imageUrl}')`;
+                } catch (error) { console.error(`Błąd ładowania tła dla ${elementId}:`, error); }
+            }
+        }
+        
+        // --- SKRYPT DLA KARTY TAROTA ---
+        const drawTarotCardButton = document.getElementById('drawTarotCardButton');
+        const tarotCardImageElement = document.getElementById('tarotCardImage');
+        const tarotCardNameElement = document.getElementById('tarotCardName');
+        const tarotCardInterpretationElement = document.getElementById('tarotCardInterpretation');
+        const defaultTarotImage = 'images/tarot-back.jpg';
+
+        async function fetchAndDisplayTarotCard() {
+            if (!tarotCardImageElement || !tarotCardNameElement || !tarotCardInterpretationElement) {
+                console.error("Brakuje elementów HTML dla Tarota."); return;
+            }
+            tarotCardImageElement.src = 'images/loading-spinner.gif'; 
+            tarotCardNameElement.textContent = 'Losowanie karty...';
+            tarotCardInterpretationElement.innerHTML = '<p class="loading-text">Chwileczkę, gwiazdy szepczą...</p>';
+            
+            console.log(">>> Tarot: PRÓBA WYKONANIA FETCH DO /api/tarot-card <<<"); 
+
+            try {
+                const response = await fetch('http://127.0.0.1:5001/api/tarot-card', {
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json', }
+                });
+                console.log("Tarot: Odpowiedź z /api/tarot-card:", response); 
+
+                if (!response.ok) {
+                    let errorMsg = `Błąd serwera (tarot): ${response.status} ${response.statusText}`;
+                    try { 
+                        const errorData = await response.json(); 
+                        errorMsg = errorData.error ? `${errorMsg} - ${errorData.error}` : errorMsg;
+                        if(errorData.details) errorMsg += ` (Szczegóły: ${errorData.details})`;
+                        console.error("Tarot: Odpowiedź błędu serwera (JSON):", errorData); 
+                    } catch (e) { 
+                        console.warn("Tarot: Nie udało się sparsować JSON z odpowiedzi błędu serwera:", e); 
+                        try { const errorText = await response.text(); errorMsg += ` | Treść odpowiedzi: ${errorText.substring(0,150)}`; console.error("Tarot: Odpowiedź błędu serwera (TEXT):", errorText); } catch (textErr) { console.error("Tarot: Nie udało się odczytać treści odpowiedzi błędu serwera jako tekst.", textErr); } 
+                    }
+                    throw new Error(errorMsg);
+                }
+                
+                const data = await response.json(); 
+                console.log("Tarot: Dane JSON z /api/tarot-card:", data); 
+                
+                if (data.cardName && data.interpretation) {
+                    tarotCardNameElement.textContent = data.cardName;
+                    let formattedInterpretation = data.interpretation.replace(/\n/g, '<br>');
+                    formattedInterpretation = formattedInterpretation.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Zamiana **tekst** na <strong>tekst</strong>
+                    tarotCardInterpretationElement.innerHTML = `<p>${formattedInterpretation}</p>`;
+                    
+                    if(data.cardName) {
+                        let cardNameForFile = data.cardName.toLowerCase()
+                            .replace(/ą/g, 'a').replace(/ć/g, 'c').replace(/ę/g, 'e')
+                            .replace(/ł/g, 'l').replace(/ń/g, 'n').replace(/ó/g, 'o')
+                            .replace(/ś/g, 's').replace(/ż/g, 'z').replace(/ź/g, 'z');
+                        let cardImageFile = cardNameForFile.replace(/[^a-z0-9]+/gi, '-').replace(/-+/g,'-').replace(/^-|-$/g, '') + '.jpg';
+                        tarotCardImageElement.src = `images/tarot-${cardImageFile}`; 
+                        console.log(`Tarot: Próba załadowania obrazka karty: images/tarot-${cardImageFile}`); 
+                        tarotCardImageElement.onerror = function() {
+                            this.onerror=null; 
+                            this.src=defaultTarotImage; 
+                            console.warn(`Tarot: Nie znaleziono obrazka dla karty: images/tarot-${cardImageFile}. Używam domyślnego rewersu.`); 
+                        };
+                    } else {
+                         tarotCardImageElement.src = defaultTarotImage;
+                    }
+                } else if (data.error) {
+                     tarotCardNameElement.textContent = 'Błąd';
+                     tarotCardInterpretationElement.innerHTML = `<p class="error-message">Błąd: ${data.error}</p>`;
+                     tarotCardImageElement.src = 'images/placeholder-error.png';
+                     if(data.details) tarotCardInterpretationElement.innerHTML += `<p class="error-details">Szczegóły: ${data.details}</p>`;
+                } else {
+                    tarotCardNameElement.textContent = 'Błąd';
+                    tarotCardInterpretationElement.innerHTML = '<p class="error-message">Nie udało się wylosować karty (nieoczekiwana odpowiedź).</p>';
+                    tarotCardImageElement.src = 'images/placeholder-error.png';
+                }
+            } catch (error) {
+                console.error('Tarot: Błąd podczas losowania karty (główny catch):', error); 
+                tarotCardNameElement.textContent = 'Błąd Połączenia';
+                tarotCardInterpretationElement.innerHTML = `<p class="error-message">Wystąpił błąd (tarot): ${error.message}</p>`;
+                tarotCardImageElement.src = 'images/placeholder-error.png';
+            }
+        }
+
+        if (drawTarotCardButton) {
+            console.log("Tarot: Przypisywanie event listenera do przycisku 'drawTarotCardButton'."); 
+            drawTarotCardButton.addEventListener('click', fetchAndDisplayTarotCard);
+        } else {
+            console.warn("Przycisk 'drawTarotCardButton' nie został znaleziony.");
+        }
+
+        if (tarotCardImageElement) { 
+            tarotCardImageElement.src = defaultTarotImage; 
+        } else {
+            console.warn("Element 'tarotCardImageElement' nie został znaleziony do ustawienia rewersu.")
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log(">>>> DOMContentLoaded - START DYNAMICZNEGO ŁADOWANIA OBRAZKÓW <<<<");
+            setElementBackground('hero', 'heroBackground'); 
+
+            const signs = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
+            signs.forEach(sign => {
+                if(document.getElementById(`img-${sign.toLowerCase()}`)) { 
+                    setImageSrc(`img-${sign.toLowerCase()}`, 'zodiacIcon', sign); 
+                }
+            });
+            
+            console.log(">>>> DOMContentLoaded - KONIEC DYNAMICZNEGO ŁADOWANIA OBRAZKÓW <<<<");
+        });
+    </script>
+</body>
+</html>
